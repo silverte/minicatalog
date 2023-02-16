@@ -1,0 +1,5 @@
+main/.terraform/
+terraform.tfstate*
+modules.json*
+terraform-provider-*
+.terraform*
