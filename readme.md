@@ -1,4 +1,4 @@
-# IaC Network Template
+# IaC minicatalog test
 
-## 테스트용 기본 네트워크 구성
+## 아키텍처 구성도
 ![](./netwrok.drawio.png)
