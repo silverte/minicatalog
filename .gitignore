@@ -3,3 +3,4 @@ terraform.tfstate*
 modules.json*
 terraform-provider-*
 .terraform*
+.DS_Store
