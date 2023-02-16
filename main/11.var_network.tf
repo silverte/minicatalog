@@ -88,7 +88,7 @@ locals {
       azs             = "${local.region}c"
       snet_CIDR       = "10.0.1.0/24"
       is_public       = true
-      is_ngw          = true
+      is_ngw          = false
       is_tgw          = false
       is_eks          = false
       rt_to_internet  = true
