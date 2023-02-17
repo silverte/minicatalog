@@ -199,14 +199,20 @@ locals {
           protocol = "HTTP"
           ssl_policy = ""
           certificate_arn = ""
-          default_action = "forward"
-          default_rule = "bend-1"
+          default_action = "fixed-response"
+          default_rule = "fixed-1"
           additional_rules = [
+            { 
+              priority = 100
+              condition = [ "cond-3", ]
+              action = "forward"
+              rule = "bend-1"
+            },
             # { 
             #   priority = 200
-            #   condition = [ "cond-2", ]
-            #   action = "redirect"
-            #   rule = "red-1"
+            #   condition = [ "cond-3", ]
+            #   action = "forward"
+            #   rule = "bend-1"
             # },
           ]
         },
@@ -302,11 +308,11 @@ locals {
   ###############
   
   fixed_response_rules = {
-    # "fixed-1" = {
-    #   content_type = "text/plain"    ## text/plain, text/css, text/html, application/javascript, application/json
-    #   message_body = ""
-    #   status_code = "404"              ## 2XX, 4XX, 5XX
-    # },
+    "fixed-1" = {
+      content_type = "text/plain"    ## text/plain, text/css, text/html, application/javascript, application/json
+      message_body = ""
+      status_code = "404"              ## 2XX, 4XX, 5XX
+    },
   }
   
   ###############
@@ -314,14 +320,18 @@ locals {
   ###############
   
   rule_conditions = {
-    # "cond-1" = {
-    #   field = "path-pattern"
-    #   values = "/static/*"
-    # },
-    # "cond-2" = {
-    #   field = "host-header"
-    #   values = "my-service.*.terraform.io"
-    # }
+    "cond-1" = {
+      field = "path-pattern"
+      values = "/mctl-planner/*"
+    },
+    "cond-2" = {
+      field = "host-header"
+      values = "my-service.*.terraform.io"
+    },
+     "cond-3" = {
+      field = "path-pattern"
+      values = "/"
+    }
   }
 
   
