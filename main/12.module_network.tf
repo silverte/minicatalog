@@ -96,3 +96,13 @@ module "network" {
   }
   
 }
+
+# output "out_snets_info" {
+#   description = "map(any) of subnets raw info"
+#   value       = module.network.out_snets_info
+# }
+
+# output "out_rtbs_info" {
+#   description = "map(any) of routetables raw info"
+#   value       = module.network.out_rtbs_info
+# }
