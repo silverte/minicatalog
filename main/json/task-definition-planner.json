@@ -1,0 +1,76 @@
+{
+  "family": "mctl-planner",
+  "taskRoleArn": "arn:aws:iam::533616270150:role/role-mctl-prd-ecs-ecsTaskRole",
+  "excutionRoleArn": "arn:aws:iam::533616270150:role/service-role/role-mctl-prd-ecs-ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+        "name": "mctl-planner",
+        "image": "533616270150.dkr.ecr.ap-northeast-3.amazonaws.com/mctl-planner",
+        "cpu": 0,
+        "portMappings": [
+            {
+                "containerPort": 80,
+                "hostPort": 80,
+                "protocol": "tcp"
+            }
+        ],
+        "essential": true,
+        "environment": [
+            {
+              "name": "DD_SITE",
+              "value": "datadoghq.com"
+            },
+            {
+              "name": "DD_API_KEY",
+              "value": "3af2028d1a1f9f3a7f0a380fb1c50647"
+            },
+            {
+              "name": "DD_PROCESS_AGENT_ENABLED",
+              "value": "true"
+            },
+            {
+              "name": "DD_APM_ENABLED",
+              "value": "true"
+            },
+            {
+              "name": "DD_APM_NON_LOCAL_TRAFFIC",
+              "value": "true"
+            },
+            {
+              "name": "DD_SYSTEM_PROBE_ENABLED",
+              "value": "true"
+            },
+            {
+              "name": "DD_LOGS_ENABLED",
+              "value": "true"
+            },
+            {
+              "name": "DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL",
+              "value": "true"
+            }
+        ],
+		    "linuxParameters": {
+          "initProcessEnabled": true,
+          "capabilities": {
+            "add": [
+              "SYS_ADMIN",
+              "SYS_RESOURCE",
+              "SYS_PTRACE",
+              "NET_ADMIN",
+              "NET_BROADCAST",
+              "NET_RAW",
+              "IPC_LOCK",
+              "CHOWN"
+            ]
+          }
+        }
+    }
+  ],
+  "executionRoleArn": "",
+  "requiresCompatibilities": [
+      "EC2"
+  ],
+  "cpu": "256",
+  "memory": "256"
+}

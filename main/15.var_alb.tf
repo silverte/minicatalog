@@ -204,9 +204,15 @@ locals {
           additional_rules = [
             { 
               priority = 100
-              condition = [ "cond-3", ]
+              condition = [ "cond-1", ]
               action = "forward"
               rule = "bend-1"
+            },
+            { 
+              priority = 200
+              condition = [ "cond-3", ]
+              action = "forward"
+              rule = "bend-2"
             },
             # { 
             #   priority = 200
@@ -237,7 +243,23 @@ locals {
       
       stickiness = [ false, 86400, "lb_cookie", "" ]
       
-      health_check_1 = [ "HTTP", "traffic-port", "/test"]
+      health_check_1 = [ "HTTP", "traffic-port", "/"]
+      health_check_2 = [5, 30, 3, 3]
+      
+      #target_id  = ["100.64.0.19", "100.64.0.21", ]
+      target_id  = []
+      target_in_vpc = true   
+    },
+    "bend-2" = {
+      protocol   = "HTTP"      
+      protocol_version = ""       
+      port       = 80
+      target_type        = "ip"
+      load_balancing_algorithm_type = "round_robin"   
+      
+      stickiness = [ false, 86400, "lb_cookie", "" ]
+      
+      health_check_1 = [ "HTTP", "traffic-port", "/"]
       health_check_2 = [5, 30, 3, 3]
       
       #target_id  = ["100.64.0.19", "100.64.0.21", ]
@@ -322,7 +344,7 @@ locals {
   rule_conditions = {
     "cond-1" = {
       field = "path-pattern"
-      values = "/mctl-planner/*"
+      values = "/mctl-planner"
     },
     "cond-2" = {
       field = "host-header"
@@ -330,7 +352,7 @@ locals {
     },
      "cond-3" = {
       field = "path-pattern"
-      values = "/"
+      values = "/mctl-manager"
     }
   }
 

@@ -1,0 +1,16 @@
+{
+  "PolicyName": "",
+  "ServiceNamespace": "ecs",
+  "ResourceId": "",
+  "ScalableDimension": "ecs:service:DesiredCount",
+  "PolicyType": "TargetTrackingScaling",
+  "TargetTrackingScalingPolicyConfiguration": {
+      "TargetValue": 80.0,
+      "PredefinedMetricSpecification": {
+          "PredefinedMetricType": "ECSServiceAverageMemoryUtilization"
+      },
+      "ScaleOutCooldown": 300,
+      "ScaleInCooldown": 300,
+      "DisableScaleIn": false
+  }
+}

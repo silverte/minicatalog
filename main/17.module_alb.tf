@@ -186,3 +186,7 @@ module "alb" {
     operator2             = local.alb_Operator2
   }
 }
+
+# output "alb_tgp_arn" {
+#   value = module.alb.alb_tgp_arn
+# }

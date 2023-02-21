@@ -1,0 +1,53 @@
+{
+  "cluster": "arn:aws:ecs:ap-northeast-3:533616270150:cluster/ecs-cluster-mctl-prd",
+  "serviceName": "mctl-planner-svc",
+  "taskDefinition": "mctl-planner",
+  "loadBalancers": [
+    {
+        "targetGroupArn": "arn:aws:elasticloadbalancing:ap-northeast-3:533616270150:targetgroup/tg-mctl-prd-80-alb-bend-1/b89b788a453d5dac",
+        "containerName": "mctl-planner",
+        "containerPort": 80
+    },
+    {
+        "targetGroupArn": "arn:aws:elasticloadbalancing:ap-northeast-3:533616270150:targetgroup/tg-mctl-prd-80-internal-bend-1/2c78592bdfea7a78",
+        "containerName": "mctl-planner",
+        "containerPort": 80
+    }
+  ],
+  "serviceRegistries": [],
+  "desiredCount": 2,
+  "deploymentConfiguration": {
+      "deploymentCircuitBreaker": {
+          "enable": true,
+          "rollback": true
+      },
+      "maximumPercent": 200,
+      "minimumHealthyPercent": 50
+  },
+  "placementConstraints": [],
+  "placementStrategy": [
+    {
+        "type": "spread",
+        "field": "attribute:ecs.availability-zone"
+    },
+    {
+        "type": "binpack",
+        "field": "memory"
+    }
+  ],
+  "networkConfiguration": {
+      "awsvpcConfiguration": {
+          "subnets": ["subnet-062dc8ff2a3e0f391","subnet-07fd120d9f37bd01a"],
+          "securityGroups": ["sg-01a44787ca225b62a"],
+          "assignPublicIp": "DISABLED"
+      }
+  },
+  "healthCheckGracePeriodSeconds": 360,
+  "schedulingStrategy": "REPLICA",
+  "deploymentController": {
+      "type": "ECS"
+  },
+  "tags": [],
+  "enableECSManagedTags": true,
+  "propagateTags": "NONE"
+}

@@ -70,6 +70,12 @@ variable "out_snets_info" {
     default     = {}
 }
 
+variable "alb_tgr_arn" {
+    description = ""
+    type = string
+    default = ""
+}
+
 ##############################
 # Tags - ECS 운영자 사번
 ##############################

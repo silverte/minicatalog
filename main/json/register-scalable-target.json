@@ -1,0 +1,12 @@
+{
+  "ServiceNamespace": "ecs",
+  "ResourceId": "",
+  "ScalableDimension": "ecs:service:DesiredCount",
+  "MinCapacity": 2,
+  "MaxCapacity": 4,
+  "SuspendedState": {
+      "DynamicScalingInSuspended": false,
+      "DynamicScalingOutSuspended": false,
+      "ScheduledScalingSuspended": false
+  }
+}

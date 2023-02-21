@@ -77,7 +77,7 @@ module "ecs" {
     ###############
     # Depends_on (Network 구성 후 ECS 구성)
     ###############
-    depends_on = [ module.network ]
+    depends_on = [ module.network, module.alb ]
 
     ##############################
     # ECS Cluster 설정
@@ -100,10 +100,11 @@ module "ecs" {
     ECS_Sample          = local.ECS_Sample
 
     ##############################
-    # Output Info ( module.vpc / module.network )
+    # Output Info ( module.vpc / module.network /module.alb)
     ##############################
     vpc_id              = module.vpc.vpc_id
     out_snets_info      = module.network.out_snets_info
+    alb_tgr_arn         = module.alb.alb_tgp_arn
 
     ##############################
     # Tags - ECS 운영자 사번

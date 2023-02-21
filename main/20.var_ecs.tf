@@ -73,7 +73,7 @@ locals {
     # ECS Cluster 설정 ( W/L별 수정 )
     ##############################    
     ECS_Cluster_Info    = {
-        instance_type       = "t3.small"  
+        instance_type       = "m5.large"  
         min_size            = 2            # desired_capacity 으로 같이 사용함 ( 25.autoscaling_group.tf )
         max_size            = 4
         volume_size         = 20
