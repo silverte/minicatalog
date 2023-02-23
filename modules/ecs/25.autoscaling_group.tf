@@ -18,7 +18,7 @@ resource "aws_autoscaling_group" "ecs_asg" {
 
     termination_policies      = [ "OldestInstance" ]
 
-    protect_from_scale_in     = true    # Scale-In 시 InService 인스턴스가 아닌 미사용 인스턴스 제거를 위한 인스턴스 축소 보호 기능 활성화
+    protect_from_scale_in     = false    # Scale-In 시 InService 인스턴스가 아닌 미사용 인스턴스 제거를 위한 인스턴스 축소 보호 기능 활성화
 
     lifecycle {
         create_before_destroy = true

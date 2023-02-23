@@ -76,7 +76,7 @@ locals {
         instance_type       = "m5.large"  
         min_size            = 2            # desired_capacity 으로 같이 사용함 ( 25.autoscaling_group.tf )
         max_size            = 4
-        volume_size         = 20
+        volume_size         = 50
     }
     ECS_LB_Subnets      = ["public1-a", "public2-c"]                # internet expose subnets
     ECS_Inst_Subnets    = ["private1-a", "private2-c"]              # ecs subnet

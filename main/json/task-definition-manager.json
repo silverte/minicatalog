@@ -1,7 +1,7 @@
 {
   "family": "mctl-manager",
   "taskRoleArn": "arn:aws:iam::533616270150:role/role-mctl-prd-ecs-ecsTaskRole",
-  "excutionRoleArn": "arn:aws:iam::533616270150:role/service-role/role-mctl-prd-ecs-ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::533616270150:role/service-role/role-mctl-prd-ecs-ecsTaskExecutionRole",
   "networkMode": "awsvpc",
   "containerDefinitions": [
     {
@@ -16,6 +16,15 @@
             }
         ],
         "essential": true,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+              "awslogs-group": "ecs/mctl-manager",
+              "awslogs-region": "ap-northeast-3",
+              "awslogs-create-group": "true",
+              "awslogs-stream-prefix": "ecs"
+          }
+        },
         "environment": [
             {
               "name": "DD_SITE",
@@ -67,7 +76,6 @@
         }
     }
   ],
-  "executionRoleArn": "",
   "requiresCompatibilities": [
       "EC2"
   ],

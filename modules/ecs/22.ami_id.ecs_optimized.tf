@@ -7,8 +7,8 @@ data "aws_ami" "ami_optimized_ecs" {
 
     filter {
         name   = "name"
-        values = ["amzn-ami*amazon-ecs-optimized"]
-        # values = ["amzn2-ami-ecs-hvm-2.0.*-x86_64-ebs"]
+        #values = ["amzn-ami*amazon-ecs-optimized"]
+        values = ["amzn2-ami-ecs-hvm-2.0.*-x86_64-ebs"]
         # values = ["amzn2-ami-ecs-hvm-2.0.20220421-x86_64-ebs"]
         # values = ["amzn-ami*amazon-ecs-optimized"]        
     }

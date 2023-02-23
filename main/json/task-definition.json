@@ -15,6 +15,15 @@
             }
         ],
         "essential": true,
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "ecs",
+                "awslogs-region": "us-west-3",
+                "awslogs-create-group": "true",
+                "awslogs-stream-prefix": "mctl-planner"
+            }
+        },
         "environment": [
             {
               "name": "DD_SITE",

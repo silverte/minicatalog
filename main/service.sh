@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 SERVICE=$(aws ecs list-services --cluster ecs-cluster-mctl-prd --query serviceArns --output text)
 

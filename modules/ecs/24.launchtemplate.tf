@@ -26,13 +26,19 @@ resource "aws_launch_configuration" "launch_conf" {
 	#  cluster_name = aws_ecs_cluster.cluster.name
 	#})
 
-	#user_data  = "#!/bin/bash\necho ECS_CLUSTER=${aws_ecs_cluster.cluster.name} >> /etc/ecs/ecs.config"
-	  user_data = <<EOF
+  user_data = <<EOF
 #!/bin/bash
 echo ECS_CLUSTER=${aws_ecs_cluster.cluster.name} >> /etc/ecs/ecs.config
-sudo systemctl stop ecs
-sudo systemctl start ecs
 EOF
+
+# user_data  = "#!/bin/bash\necho ECS_CLUSTER=${aws_ecs_cluster.cluster.name} >> /etc/ecs/ecs.config"
+
+# 	  user_data = <<EOF
+# #!/bin/bash
+# echo ECS_CLUSTER=${aws_ecs_cluster.cluster.name} >> /etc/ecs/ecs.config
+# sudo systemctl stop ecs
+# sudo systemctl start ecs
+# EOF
 
 	root_block_device {
 		volume_type           	= "gp2"
