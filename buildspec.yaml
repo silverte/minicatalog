@@ -1,0 +1,28 @@
+version: 0.2
+
+env:
+  shell: bash
+  variables: 
+    name: "silverte"
+
+phases:
+  install:
+    commands:
+      - echo "install"
+    finally:
+      - echo "install - finally"
+  pre_build:
+    commands:
+      - echo "pre_build"
+    finally:
+      - echo "pre_build - finally"
+  build:
+    commands:
+      - echo "build"
+    finally:
+      - echo "build - finally"
+  post_build:
+    commands:
+      - echo "post_build"
+    finally:
+      - echo "post_build - finally"
