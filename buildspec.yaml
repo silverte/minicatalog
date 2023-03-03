@@ -8,6 +8,7 @@ env:
 phases:
   install:
     commands:
+      - echo "hi! ${name}"
       - echo "install"
     finally:
       - echo "install - finally"
@@ -19,6 +20,8 @@ phases:
   build:
     commands:
       - echo "build"
+      - echo "register task-definition"
+      - sh ./main/task.sh
     finally:
       - echo "build - finally"
   post_build:
