@@ -4,10 +4,10 @@ SERVICE=$(aws ecs list-services --cluster ecs-cluster-mctl-prd --query serviceAr
 
 if [ ${#SERVICE} -ne 0 ]; then
     echo "service exist \n ${SERVICE}";
-    aws ecs delete-service --cluster ecs-cluster-mctl-prd --service mctl-planner-svc --force
-    aws ecs delete-service --cluster ecs-cluster-mctl-prd --service mctl-manager-svc --force
-    echo "service is terminating... for a long time"
+    echo "update service"
+    aws ecs update-service --service=mctl-planner-svc --cluster=ecs-cluster-mctl-prd --task-definition=mctl-planner
+    aws ecs update-service --service=mctl-manager-svc --cluster=ecs-cluster-mctl-prd --task-definition=mctl-manager
 else
-    aws ecs create-service --cluster "ecs-cluster-mctl-prd" --enable-execute-command --cli-input-json file://json/service-planner.json;
-    aws ecs create-service --cluster "ecs-cluster-mctl-prd" --enable-execute-command --cli-input-json file://json/service-manager.json;
+    aws ecs create-service --cluster "ecs-cluster-mctl-prd" --enable-execute-command --cli-input-json file://./main/json/service-planner.json;
+    aws ecs create-service --cluster "ecs-cluster-mctl-prd" --enable-execute-command --cli-input-json file://./main/json/service-manager.json;
 fi

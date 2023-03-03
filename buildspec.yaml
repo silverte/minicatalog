@@ -22,6 +22,8 @@ phases:
       - echo "build"
       - echo "register task-definition"
       - sh ./main/task.sh
+      - echo "create or update service"
+      - sh ./main/service.sh
     finally:
       - echo "build - finally"
   post_build:
