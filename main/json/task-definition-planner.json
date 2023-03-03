@@ -6,7 +6,7 @@
   "containerDefinitions": [
     {
         "name": "mctl-planner",
-        "image": "533616270150.dkr.ecr.ap-northeast-3.amazonaws.com/mctl-planner",
+        "image": "533616270150.dkr.ecr.ap-northeast-3.amazonaws.com/mctl-planner:latest",
         "cpu": 0,
         "portMappings": [
             {
@@ -24,6 +24,24 @@
           "retries": 3
         },
         "essential": true,
+        "secrets": [
+          {
+            "name": "DB_URL",
+            "valueFrom": "arn:aws:secretsmanager:ap-northeast-3:533616270150:secret:minicatalog/dev-kWZ5iw:DB_URL::" 
+          },
+          {
+            "name": "DB_PORT",
+            "valueFrom": "arn:aws:secretsmanager:ap-northeast-3:533616270150:secret:minicatalog/dev-kWZ5iw:DB_PORT::" 
+          },
+          {
+            "name": "DB_USERNAME",
+            "valueFrom": "arn:aws:secretsmanager:ap-northeast-3:533616270150:secret:minicatalog/dev-kWZ5iw:DB_USERNAME::" 
+          },
+          {
+            "name": "DB_PASSWORD",
+            "valueFrom": "arn:aws:secretsmanager:ap-northeast-3:533616270150:secret:minicatalog/dev-kWZ5iw:DB_PASSWORD::" 
+          }
+        ],
         "logConfiguration": {
           "logDriver": "awslogs",
           "options": {

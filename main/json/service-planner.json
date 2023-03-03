@@ -18,8 +18,8 @@
   "desiredCount": 2,
   "deploymentConfiguration": {
       "deploymentCircuitBreaker": {
-          "enable": true,
-          "rollback": true
+          "enable": false,
+          "rollback": false
       },
       "maximumPercent": 200,
       "minimumHealthyPercent": 50
